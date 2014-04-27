@@ -1,0 +1,41 @@
+.book-info {
+  text-align: left;
+}
+
+.book-info p {
+  display: inline-block;
+}
+
+.book-info iframe {
+  float: right;
+}
+
+.table-of-contents {
+  font-size: 2em;
+  text-align: left;
+}
+
+.table-of-contents a {
+  display: block;
+}
+
+.table-of-contents a:active {
+  color: #1166CC;
+}
+
+header {
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+header p {
+  font-size: 16px;
+}
+
+header h1 {
+  font-size: 4em;
+}
+
+.content h1 {
+  font-size: 2em;
+}
