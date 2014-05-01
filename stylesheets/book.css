@@ -1,3 +1,23 @@
+.illustration {
+  margin: 32px auto;
+}
+
+.illustration img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.illustration.medium {
+  height: 250px;
+  width: 600px;
+}
+
+.illustration-label {
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
 .book-info {
   text-align: left;
 }

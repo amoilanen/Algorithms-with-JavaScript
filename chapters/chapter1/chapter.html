@@ -9,8 +9,26 @@ TODO: Eratosphenus sieve
 
 <p>Here goes the contents and some JavaScript code</p>
 
-<pre>
-<code>
-console.log("Hello, world!");
-</code>
+<pre class="line-numbers language-javascript">
+<code>function max(elements) {
+  var max;
+
+  for (var i = 0; i < elements.length; i++) {
+    if (max == undefined || elements[i] > max) {
+      max = elements[i];
+    }
+  }
+  return max;
+}</code>
 </pre>
+
+<p>
+And here goes an illustration:
+</p>
+
+<!-- TODO: Use Handlebar template to render such thing as an illustration? -->
+
+<div class="medium illustration">
+  <img src="chapters/chapter1/svg/1.1.eratosthenes.sieve.svg" title="Sieve of Eratosthenes up to 15"/>
+  <div class="illustration-label">1.1 - Sieve of Eratosthenes up to 15</div>
+</div>
