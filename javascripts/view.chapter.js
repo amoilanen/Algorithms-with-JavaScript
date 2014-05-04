@@ -10,7 +10,10 @@ $(function() {
   document.title = title;
 
   $.get("chapters/chapter" + chapterId + "/chapter.html").then(function(html) {
-    $("#chapter-placeholder").html(html);
+    var placeholderElement = $("#chapter-placeholder");
+
+    placeholderElement.html(html);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, placeholderElement[0]]);
     Prism.highlightAll();
   });
 });

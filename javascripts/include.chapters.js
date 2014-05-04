@@ -7,7 +7,10 @@ $(function(){
     var chaptersHtml = [].slice.call(arguments, 0);
 
     chaptersHtml.forEach(function(chapterHtml, idx) {
-      $(includes[idx]).html(chapterHtml[0]);
+      var includesElement = $(includes[idx]);
+
+      includesElement.html(chapterHtml[0]);
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, includesElement[0]]);
     });
     Prism.highlightAll();
   });
