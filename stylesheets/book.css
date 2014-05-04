@@ -1,3 +1,11 @@
+.inline-math {
+  display: inline-block;
+}
+
+.math-expression {
+  display: block;
+}
+
 .illustration {
   margin: 32px auto;
 }
@@ -12,10 +20,11 @@
   width: 600px;
 }
 
-.illustration-label {
-  font-weight: bold;
+.artefact-label {
+  font-size: 1em;
   font-style: italic;
   text-align: center;
+  margin-bottom: 32px;
 }
 
 .book-info {
@@ -58,4 +67,47 @@ header h1 {
 
 .content h1 {
   font-size: 2em;
+}
+
+div.highlighted {
+  background-color: #CCCCCC;
+  border-radius: 8px;
+  color: #000000;
+  margin-top: 32px;
+  padding: 16px;
+}
+
+div.highlighted.no-artefact-label {
+  margin-bottom: 32px;
+}
+
+div.definition-term:before,
+div.example-title:before {
+  float: right;
+  font-style: italic;
+  font-weight: normal;
+  margin-right: 8px;
+}
+
+div.definition-term:before {
+  content: "Definition";
+}
+
+div.example-title:before {
+  content: "Example";
+}
+
+div.definition-term,
+div.example-title {
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+div.highlighted ol {
+  margin-top: 16px;
+}
+
+div.highlighted ol.lower-alpha {
+  list-style-type: lower-alpha;
 }
