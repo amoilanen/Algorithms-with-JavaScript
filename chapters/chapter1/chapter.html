@@ -3,8 +3,13 @@
 
 <!--
 TODO: Finding max element
-TODO: Determining if a string is a palindrome
 TODO: Eratosphenus sieve
+TODO: Finding gcd
+
+Excercises:
+TODO: Determining if a string is a palindrome
+TODO: Finding all the perfect numbers less than given number (sum of all positive dividers is equal to number)
+TODO: Program that solves a quadratic equation, input three coefficients, output the found roots
 -->
 
 <p>In this chapter we discuss what is an algorithm, time complexity, storage complexity and provide a few examples of algorithms.
@@ -80,7 +85,7 @@ So far while talking about algorithms we encountered no JavaScript or any other 
 </p>
 
 <p>
-A careful reader might be a bit puzzled by our confidence at this point. How can we state that any algorithm can be expressed using JavaScript? Can this be in fact proved given the definition of an algorithm we gave earlier? Is JavaScript in fact powerful enough to express all the algorithms there can be? It turns out it is, but we will leave this statement without any proof until the very end of the book where we will discuss abstract models of computation and give even more formal and strict definition of an algorithm.
+A careful reader might be a bit puzzled by our confidence at this point. How can we state that any algorithm can be expressed using JavaScript? Can this be in fact proven given the definition of an algorithm we gave earlier? Is JavaScript in fact powerful enough to express all the algorithms there can be? It turns out it is, but we will leave this statement without any proof until the very end of the book where we will discuss abstract models of computation and give even more formal and strict definition of an algorithm.
 </p>
 
 <p>
@@ -97,15 +102,150 @@ Let's look again at the definition 1.1 of algorithm and its part that states tha
 We see that the specification using JavaScript is much more clear and shorter than using the natural language. Later in the book primarily JavaScript will be used, but we will keep in mind that the discussed algorithms can actually be expressed using other formal notations. Many Computer Science books go as far as inventing their own "pseudocode" in order to not be dependent on implementation details of a particular programming language. We will not go as far as they do and will happily use JavaScript, hence the name of the book "Algorithms with JavaScript".
 </p>
 
+<p>
+Another question that we can ask by now are there any computational procedures that are not algorithms? Yes, there are and we will provide examples immediately.
+</p>
+
+<p>
+First example is an infinite computational procedure which is by given definition not an algorithm:
+</p>
+
+<pre class="language-javascript">
+<code>function getMaximumNumber() {
+  var x = 0;
+  while(true) {
+    x++;
+  }
+  return x;
+}</code>
+</pre>
+
+<p>
+From this example we also see that not every computational procedure that can be formally expressed using some notation is an algorithm.
+</p>
+
+<p>
+Another example of a non-algorithm will be the following division implementation defined on the set of all numbers:
+</p>
+
+<pre class="language-javascript">
+<code>function divide(x, y) {
+  if (y == 0) {
+    throw new Error("Cannot divide by zero");
+  }
+  return x / y;
+}</code>
+</pre>
+
+<p>
+This is not an algorithm because the result is not defined for all the pairs <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math">
+<mstyle>
+  <mo>(</mo>
+  <mi>x</mi>
+  <mo>,</mo>
+  <mi>y</mi>
+  <mo>)</mo>
+</mstyle>
+</math> where <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>y</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>0</mi></math>. However, it is easy to fix this and make the function <i>divide</i> specify an algorithm:
+</p>
+
+<pre class="language-javascript">
+<code>function divide(x, y) {
+  return y == 0 ? Infinity : x / y;
+}</code>
+</pre>
+
+<p>
+In fact in JavaScript returning <i>Infinity</i> when dividing by <i>0</i> is the default behavior so we can just write:
+</p>
+
+<pre class="language-javascript">
+<code>function divide(x, y) {
+  return x / y;
+}</code>
+</pre>
+
+<p>
+And this will be an algorithm, but only given the details of JavaScript engine implementation and the fact that it is possible to divide by <i>0</i> in JavaScript.
+</p>
+
+<p>
+Now that we are finished with discussing the definition, let's try to take a look at a few more interesting algorithms.
+</p>
+
 <h2>Algorithm: finding maximum element</h2>
 
-TODO:
+<p>
+Let's try to find a maximum element in an array of elements. The algorithm is still quite simple:
+</p>
+
+<div class="highlighted">
+<div class="example-title">Finding maximum element</div>
+Given an array of or elements which can be empty:
+<ol>
+  <li>The current maximum is not defined in the beginning</li>
+  <li>Take the next element in the array which was not yet taken, to be specific the next such element with the smallest index. If there is no next element (for example, the array is empty) go directly to the step 5.</li>
+  <li>If the element is greater than the current maximum or the current maximum is not defined, update the current maximum to be the element</li>
+  <li>Go to step 2</li>
+  <li>Return maximum element</li>
+</ol>
+</div>
+<div class="artefact-label" href="#1.2">1.2 - Finding maximum element</div>
+
+<p>
+The implementation in JavaScript:
+</p>
+
+<pre class="language-javascript line-numbers">
+<code>
+function max(elements) {
+    var max;
+
+    for (var i = 0; i < elements.length; i++) {
+      if (max == undefined || elements[i] > max) {
+        max = elements[i];
+      }
+    }
+    return max;
+  }
+</code>
+</pre>
+
+<p>
+This is in fact an algorithm: it is defined on all the arrays of numbers, finishes in a finite number of steps and can be formally specified. The code is more or less obvious, on the line 3 we declare the maximum and it is  <i>undefined</i> in the beginning. Then we go through all the elements of the array starting with the elements with smaller indexes in lines 5-9 and for each such element <i>elements[i]</i> we compare it to <i>max</i> and if the last is smaller than the current element or <i>undefined</i> we update <i>max</i> to be <i>elements[i]</i>. This corresponds to the algorithm specification given above in <i>1.2</i>.
+</p>
+
+<p>
+In this case the algorithm is pretty straightforward and no other computational procedures can obviously be better. Also it is quite clear that we should look through all the elements in the array to find a maximum anyway. So, probably we cannot optimize the algorithm further.
+</p>
+
+<p>
+However, normally the situation is not as clear as this one and we can have several algorithms that can be candidates for solving a particular problem and returning a result. In this case we would like to choose the best algorithm. The best normally means the one that executes faster and requires less memory. So far, we have not formalized what it means to be faster or more memory-efficient. Now is about time to rectify this and introduce formal means which will allow to compate algorithms to each other. First, let's start with the discussion of <i>time complexity</i>.
+</p>
 
 <h2>Time complexity</h2>
 
 TODO:
 
+<h2>Big O-notation</h2>
+
+TODO:
+
+Discuss that the O notation may in fact be irrelevant in case we are dealing with relatively small inputs like arrays of no more than 10 elements, etc.
+
 <h2>Storage complexity</h2>
+
+TODO:
+
+Tradeoff speed vs. storage.
+
+<h2>Eratosthenes sieve</h2>
+
+TODO:
+
+<h2>Euclidus algorithm</h2>
+
+TODO:
 
 <p>Here goes the contents and some JavaScript code</p>
 

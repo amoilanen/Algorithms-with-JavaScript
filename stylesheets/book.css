@@ -1,3 +1,8 @@
+pre[class*="language-"] {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
 .inline-math {
   display: inline-block;
 }
@@ -71,7 +76,7 @@ header h1 {
 
 div.highlighted {
   background-color: #CCCCCC;
-  border-radius: 8px;
+  border-radius: 4px;
   color: #000000;
   margin-top: 32px;
   padding: 16px;
