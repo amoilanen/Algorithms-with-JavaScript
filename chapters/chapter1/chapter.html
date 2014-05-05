@@ -197,8 +197,7 @@ The implementation in JavaScript:
 </p>
 
 <pre class="language-javascript line-numbers">
-<code>
-function max(elements) {
+<code>function max(elements) {
     var max;
 
     for (var i = 0; i < elements.length; i++) {
@@ -207,12 +206,11 @@ function max(elements) {
       }
     }
     return max;
-  }
-</code>
+  }</code>
 </pre>
 
 <p>
-This is in fact an algorithm: it is defined on all the arrays of numbers, finishes in a finite number of steps and can be formally specified. The code is more or less obvious, on the line 3 we declare the maximum and it is  <i>undefined</i> in the beginning. Then we go through all the elements of the array starting with the elements with smaller indexes in lines 5-9 and for each such element <i>elements[i]</i> we compare it to <i>max</i> and if the last is smaller than the current element or <i>undefined</i> we update <i>max</i> to be <i>elements[i]</i>. This corresponds to the algorithm specification given above in <i>1.2</i>.
+This is in fact an algorithm: it is defined on all the arrays of numbers, finishes in a finite number of steps and can be formally specified. The code is more or less obvious, on the line 2 we declare the maximum and it is  <i>undefined</i> in the beginning. Then we go through all the elements of the array starting with the elements with smaller indexes in lines 4-8 and for each such element <i>elements[i]</i> we compare it to <i>max</i> and if the last is smaller than the current element or <i>undefined</i> we update <i>max</i> to be <i>elements[i]</i>. This corresponds to the algorithm specification given above in <i>1.2</i>.
 </p>
 
 <p>
@@ -229,7 +227,169 @@ So far, we have not formalized what it means to be faster or more memory-efficie
 
 <h2>Time complexity</h2>
 
-TODO:
+<p>
+One of such important characteristics that can be used to compare algorithms with each other can be the time it takes to execute a program. In most cases we would like our algorithms to be fast, but what machine do we use to measure the time it takes the algorithm to finish its work on typical input? Should it be a smartphone, a tablet, or even a supercomputer?
+</p>
+
+<p>
+Let's consider a more real-life metaphor for what we are trying to achieve here. Our situation is a bit like trying to reach point B from point A and having several routes to choose from. Here point A is the input for our algorithms, a route is an algorithm and point B is the output. The time it takes to reach point B corresponds to the execution time of an algorithm.
+</p>
+
+<p>
+Should we measure the time it takes to drive a car from A to B for each of these roads? What if our car is accidentally loaded more when we drive on some of these roads? Do we then compare the different routes in a fair manner? What if the weather is different and due to the wind we drive slower? Or should we maybe use a bicycle altogether?
+</p>
+
+<p>
+Clearly we would like to abstract away from all these accidental details related to how we reach point B from point A and compare the routes to each other using only the essential information we need. In this case such essential information can be the length of the route. If we take compare only the lengthes of the different routes we no longer care what road conditions there are, which car we use, and so forth. Of course, not only the length of the route matters, it may also matter whether the route is flat, how many curves it has or whether it goes through a road with no asphalt. But the route length is still a good first approximation.
+</p>
+
+<p>
+Similarly in the case of algorithms comparing the execution time is also a good first approximation of how to compare algorithms. No doubt can be other characteristics that we would like to compare. One of such characterstics is the amount of memory an algorithm uses when it is executed, in fact, we will consider it just after the discussion of the time complexity. Other characteristics we would like to measure and compare to each other can be the number of assignment or read operations, etc.
+</p>
+
+<p>
+So how do we go about execution time of the algorithm? How do we abstract it from a particular machine and execution on that machine similarly to our route from A to B metaphor?
+</p>
+
+<p>
+One approach that we will follow is to count the number of primitive operations performed by an algorithm. By a primitive operation we mean comparing two numbers, remembering some value or referring to some value, etc. Alternatively we could measure the number of steps from the definition 1.1 of an algorithm but steps can be not equivalent in terms of time complexity: some steps can be relatively simple and other can include multiple operations.
+</p>
+
+<p>
+So by now we agreed to measure the the number of primitive operations and approximate the resulting value as the execution time of algorithm. But what if the number of steps is different for different inputs?
+</p>
+
+<p>
+For example, an algorithm that tries to find the first position of an element in an array can finish its work both after examining the first element in the input and the last. Here we will not be providing a formal specification of the algorithm in English but just provide the implementation in JavaScript right away. This is still a formal specification that we need according to the definition of an algorithm 1.1.
+</p>
+
+<pre class="language-javascript line-numbers with-artefact-label">
+<code>function find(arr, element) {
+  var position = -1;
+  var currentIndex = 0;
+
+  while ((position < 0) && (currentIndex < arr.length)) {
+    if (arr[currentIndex] == element) {
+      position = currentIndex;
+    } else {
+      currentIndex++;
+    }
+  }
+  return position;
+}</code>
+</pre>
+<div class="artefact-label" href="#1.3">1.3 - Finding element</div>
+
+And a short example of invoking the <i>find</i> function:
+
+<pre class="language-javascript">
+<code>var arr = [1, 2, 3, 4, 5];
+
+console.log(find(arr, 3)); //2
+console.log(find(arr, 10)); //-1</code>
+</pre>
+
+<p>
+How do we measure the number of primitive operations for such an algorithm given that it strongly depends on the provided array? The answer to this difficulty can be measuring the average number of primitive operations that can be observed by providing sufficiently large number of different arrays of the given length. In the first approximation and having no further specific information about the possible inputs we can assume that are random.
+</p>
+
+<p>
+If you are familiar with the Probability Theory, speaking its language, we can define the time complexity as the mean of the number of primitive operations the algorithm performs given a particular distribution of the possible inputs for an algorithm.
+</p>
+
+<p>
+Now if we try to give the estimation of the time complexity of the algorithm above, first we will count the number of primitive operations.
+</p>
+
+<p>
+Lines 2, 3 and 12 give one primitive operation each, so this is <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>3</mi></math>, in lines 5 - 11 first we perform one comparison for all the elements except the last one for which we make an additional one, we will count this as <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>k</mi></math> primitive operations where <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>k</mi></math> is the number of steps before we find an element. It is obvious that <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math">
+  <mi>0</mi>
+  <mo>&le;</mo>
+  <mi>k</mi>
+  <mo>&le;</mo>
+  <mi>n</mi>
+</math>, where <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>n</mi></math> is the length of the array. On each iteration we additionally make one comparison in line 6 and one assignment in line 7 or line 9, this gives us <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math">
+  <mi>3</mi>
+  <mo>*</mo>
+  <mi>k</mi>
+</math> primitive operations for lines 5 - 11 in total. The formula for the time complexity for the case when there is such an element <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>k</mi></math> in the array will be:
+</p>
+
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>t</mi>
+  <mrow>
+    <mo>(</mo>
+    <mi>k</mi>
+    <mo>)</mo>
+  </mrow>
+  <mo>=</mo>
+  <mrow>
+    <mi>3</mi>
+    <mo>*</mo>
+    <mi>k</mi>
+    <mo>+</mo>
+    <mi>3</mi>
+  </mrow>
+</math>
+
+<p>
+Taking the average by <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>k</mi></math> which is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mfrac>
+    <mi>n</mi>
+    <mi>2</mi>
+  </mfrac>
+</math> we obtain the time complexity for the algorithm. In fact it can be represented as a function of the number of elements in the array <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>n</mi></math>:
+</p>
+
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>t</mi>
+  <mrow>
+    <mo>(</mo>
+    <mi>n</mi>
+    <mo>)</mo>
+  </mrow>
+  <mo>=</mo>
+  <mrow>
+    <mfrac>
+      <mi>3</mi>
+      <mi>2</mi>
+    </mfrac>
+    <mo>*</mo>
+    <mi>n</mi>
+    <mo>+</mo>
+    <mi>3</mi>
+  </mrow>
+</math>
+
+<p>
+Let's now look at the algorithm 1.2 for finding the maximum element. The number of primitive operations that this algorithm will perform also depends on the size of the input array, luckily for us, in this case, it does not depend on what the elements of the array are. In a similar fashion we find the time complexity of the algorithm to be:
+</p>
+
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>t</mi>
+  <mrow>
+    <mo>(</mo>
+    <mi>n</mi>
+    <mo>)</mo>
+  </mrow>
+  <mo>=</mo>
+  <mrow>
+    <mi>4</mi>
+    <mo>*</mo>
+    <mi>n</mi>
+    <mo>+</mo>
+    <mi>1</mi>
+  </mrow>
+</math>
+
+<p>
+Now given these two examples we can finally give a formal definition of what the time complexity of an algorithm is.
+</p>
+
+Def. Size of input
+Def. Time complexity - number of steps as a function from the size of the input
+
+TODO: Algorithms should accept the same input
 
 <h2>Big O-notation</h2>
 

@@ -3,12 +3,18 @@ pre[class*="language-"] {
   margin-bottom: 32px;
 }
 
+pre.with-artefact-label[class*="language-"] {
+  margin-bottom: 0;
+}
+
 .inline-math {
   display: inline-block;
 }
 
+.MathJax .math-expression,
 .math-expression {
   display: block;
+  margin-bottom: 20px;
 }
 
 .illustration {
