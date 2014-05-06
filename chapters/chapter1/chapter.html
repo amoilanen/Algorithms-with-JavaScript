@@ -383,15 +383,39 @@ Let's now look at the algorithm 1.2 for finding the maximum element. The number 
 </math>
 
 <p>
-Now given these two examples we can finally give a formal definition of what the time complexity of an algorithm is.
+Now with these two examples we can finally give a formal definition of what the time complexity of an algorithm is. First, we can note that in these examples the time complexity was a function of the length of the input array. The length of the input array is here just a particular case of the size of an input. Let's define what the size of the input is formally.
 </p>
 
-Def. Size of input
-Def. Time complexity - number of steps as a function from the size of the input
+<div class="highlighted">
+<div class="definition-term">Input size</div>
+Let's select a function that given an input produces a natural number or zero. The value produced by this function we will call the input size for a given input.
+</div>
+<div class="artefact-label" href="#1.4">1.4 - Input size</div>
 
-TODO: Algorithms should accept the same input
+<p>
+In our two last examples the functon was length, however, according to the given definition there is considerable freedom in what to choose as the input size, for example, for an array it should not necessarily be the length, it can also be the minimum element or the number of odd elements, etc.
+</p>
 
-<h2>Big O-notation</h2>
+<div class="highlighted">
+<div class="definition-term">Time complexity of algorithm</div>
+<p>
+Given an algorithm, a set of its possible inputs, and the distribution (relative frequencies) of those values, we define the time complexity of this algorithm as the average number of primitive operations (take value, assign value, compare two values, etc.) it takes the algorithm to complete its work.
+</p>
+<p>
+The function that determines the input size for a given algorithm input is normally selected in such a manner that the time complexity of the algorithm for a given input can be determined only given the size of this input. In other words the time complexity can be expressed as a function of the input size.
+</p>
+</div>
+<div class="artefact-label" href="#1.5">1.5 - Time complexity of algorithm</div>
+
+<p>
+In the examples above we found the time complexity of the algorithms for finding an element and finding a maximum element as the functions of the input size. This is normally what we will need to analyze how the time complexity of an algorithm changes given that its input size changes. Traditionally, we are normally interested in how the time complexity changes as the input size grows.
+</p>
+
+<p>
+Given the definition 1.5 of the time complexity, clearly, if we want to compare the time complexity of two different algorithms then they should have the same set of inputs and input distribution. Otherwise we will be comparing apples to oranges or two functions of single argument with different arguments. As a rule this is not a problem as we normally would like to compare the efficiency and time complexity of algorithms that solve the same problem and therefore share the possible input values. An example of this we will see in this chapter a bit later when we compare two different algorithms for finding all the prime numbers less then a given number.
+</p>
+
+<h2>Big O-notation, Theta-notation</h2>
 
 TODO:
 
