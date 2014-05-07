@@ -417,9 +417,35 @@ Given the definition 1.5 of the time complexity, clearly, if we want to compare 
 
 <h2>Big O-notation, Theta-notation</h2>
 
+<p>So now we know how to express mathematically the time complexity of an algorithm as a function of the input size. But how do we compare such functions with each other in order to understand what algorithm has a better time complexity?
+</p>
+
+<p>
+It is quite common to study the behavior of the complexity function when the input size grows larger and larger, that is, in mathematical terms the asymptotic behavior of the time complexity function. The logic behind this is quite straightforward: for small input sizes the execution times for different algorithms solving the same problem are likely also small and roughly can be deemed the same. On the other hand as the input size grows the execution times also normally grows and the difference between the execution times of algorithms also grows.
+</p>
+
+<div class="highlighted">
+<div class="example-title">Algorithm with decreasing time complexity</div>
+A short side note about why the execution time normally grows as the input size grows. It is actually easy to build an algorithm the execution time of which decreases as the input size grows. Not that it will be useful for anything, but quite interesting. The algorithm: given <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math"><mi>n</mi></math> output the first <math xmlns='http://www.w3.org/1998/Math/MathML' class="inline-math">
+  <mfloor/>
+    <mfrac>
+      <mi>100</mi>
+      <mi>n</mi>
+    </mfrac>
+</math> odd numbers.
+The algorithm is a bit artificial, and normally we select the input size in such a manner that the execution time grows anyway.
+</div>
+<div class="artefact-label" href="#1.2">1.2 - Finding maximum element</div>
+
+<p>
+In order to study how the time complexity function behaves as the input size grows asymptotically to plus infinity we will need to introduce some formal mathematical notation.
+</p>
+
 TODO:
 
 Discuss that the O notation may in fact be irrelevant in case we are dealing with relatively small inputs like arrays of no more than 10 elements, etc.
+
+If we are doing some optimization for small or medium inputs we should compare the function values, not just the asymptotic behavior.
 
 <h2>Storage complexity</h2>
 
@@ -454,7 +480,7 @@ TODO:
 And here goes an illustration:
 </p>
 
-<!-- TODO: Use Handlebar template to render such thing as an illustration? -->
+<!-- TODO: Use Handlebars template to render such thing as an illustration? -->
 
 <div class="medium illustration">
   <img src="chapters/chapter1/svg/1.1.eratosthenes.sieve.svg" title="Sieve of Eratosthenes up to 15"/>
