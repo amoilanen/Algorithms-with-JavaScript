@@ -11,11 +11,11 @@ describe("prime.numbers", function() {
     });
 
     it(funcName + " should return all prime numbers before n > 2, n is not prime", function() {
-      expect(ch1[funcName](15)).toEqual([3, 5, 7, 11, 13]);
+      expect(ch1[funcName](15)).toEqual([2, 3, 5, 7, 11, 13]);
     });
 
     it(funcName + " should return all prime numbers before n > 2, n is prime", function() {
-      expect(ch1[funcName](5)).toEqual([3, 5]);
+      expect(ch1[funcName](5)).toEqual([2, 3, 5]);
     });
   });
 });
