@@ -11,7 +11,18 @@
     return 1;
   }
 
+  function gcd(x, y) {
+    var r = x % y;
+
+    while (r > 0) {
+      x = y;
+      y = r;
+      r = x % y;
+    }
+    return y;
+  }
+
   host.ch1 = host.ch1 || {};
-  host.ch1.gcd = gcdSlow;
+  host.ch1.gcd = gcd;
   host.ch1.gcdSlow = gcdSlow;
 })(this);
