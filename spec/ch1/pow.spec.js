@@ -1,4 +1,4 @@
-describe("pow", function() {
+describe("chapter1.pow", function() {
 
   ["powSlow", "pow"].forEach(function(funcName) {
 

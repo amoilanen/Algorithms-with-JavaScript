@@ -1,4 +1,4 @@
-describe("prime.numbers", function() {
+describe("chapter1.prime.numbers", function() {
 
   ["primesUpToSlow", "primesUpTo"].forEach(function(funcName) {
 

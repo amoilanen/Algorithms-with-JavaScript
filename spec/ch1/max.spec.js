@@ -1,4 +1,4 @@
-describe("max", function() {
+describe("chapter1.max", function() {
 
   it("should return maximum among several elements", function() {
     expect(ch1.max([2, 1, 4, 2, 3])).toBe(4);
