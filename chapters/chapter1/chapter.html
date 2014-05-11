@@ -264,16 +264,15 @@ For example, an algorithm that tries to find the first position of an element in
 </p>
 
 <pre class="language-javascript line-numbers with-artefact-label">
-<code>function find(arr, element) {
+<code>function find(elements, toFind) {
   var position = -1;
   var currentIndex = 0;
 
-  while ((position < 0) && (currentIndex < arr.length)) {
-    if (arr[currentIndex] == element) {
+  while ((currentIndex < elements.length) && (position < 0)) {
+    if (elements[currentIndex] == toFind) {
       position = currentIndex;
-    } else {
-      currentIndex++;
     }
+    currentIndex++;
   }
   return position;
 }</code>
@@ -692,7 +691,7 @@ But at the same time according to the definition 1.8 of O-notation <math xmlns='
 <div class="section-label">Note</div>
 </p>
 <p>
-In our definitions and when we talk about asymptotic behavior we always assume that the argument of the functions in question is growing towards positive infinity. In our case this covers the behavior of the input size and the fact that normally the time complexity grows as the input size grows and we want to compare the time complexities with each other when they are large. However, the given definitions of o, O and &#920 can be generalized and be relevant for functions that accept arguments other than positive integers and for the arguments approaching values other than plus infinity. 
+In our definitions and when we talk about asymptotic behavior we always assume that the argument of the functions in question is growing towards positive infinity. In our case this covers the behavior of the input size and the fact that normally the time complexity grows as the input size grows and we want to compare the time complexities with each other when they are large. However, the given definitions of o, O and &#920 can be generalized and be relevant for functions that accept arguments other than positive integers and for the arguments approaching values other than plus infinity. However, for our needs in this book this is a bit excessive and we will just use the simplified definitions given above which will be more than enough for the algorithms we are going to consider later.
 </p>
 
 <p>
