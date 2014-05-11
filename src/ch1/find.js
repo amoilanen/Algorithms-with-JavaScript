@@ -1,14 +1,15 @@
 (function(host) {
 
-  function find(elements, toFind) {
+  function find(arr, element) {
     var position = -1;
     var currentIndex = 0;
 
-    while ((currentIndex < elements.length) && (position < 0)) {
-      if (elements[currentIndex] == toFind) {
+    while ((position < 0) && (currentIndex < arr.length)) {
+      if (arr[currentIndex] == element) {
         position = currentIndex;
+      } else {
+        currentIndex++;
       }
-      currentIndex++;
     }
     return position;
   }
