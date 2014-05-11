@@ -7,6 +7,11 @@ pre.with-artefact-label[class*="language-"] {
   margin-bottom: 0;
 }
 
+.section-label {
+  font-style: italic;
+  font-weight: bold;
+}
+
 .inline-math {
   display: inline-block;
 }
@@ -89,7 +94,8 @@ div.highlighted.no-artefact-label {
 }
 
 div.definition-term:before,
-div.example-title:before {
+div.example-title:before,
+div.theorem-title:before {
   float: right;
   font-style: italic;
   font-weight: normal;
@@ -104,8 +110,13 @@ div.example-title:before {
   content: "Example";
 }
 
+div.theorem-title:before {
+  content: "Theorem";
+}
+
 div.definition-term,
-div.example-title {
+div.example-title,
+div.theorem-title {
   font-style: italic;
   font-weight: bold;
   margin-bottom: 16px;

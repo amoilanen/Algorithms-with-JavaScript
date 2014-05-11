@@ -436,13 +436,261 @@ A short side note about why the execution time normally grows as the input size 
 </math> odd numbers.
 The algorithm is a bit artificial, and normally we select the input size in such a manner that the execution time grows anyway.
 </div>
-<div class="artefact-label" href="#1.2">1.2 - Finding maximum element</div>
+<div class="artefact-label" href="#1.6">1.6 - Finding maximum element</div>
 
 <p>
 In order to study how the time complexity function behaves as the input size grows asymptotically to plus infinity we will need to introduce some formal mathematical notation.
 </p>
 
+<div class="highlighted">
+<div class="definition-term">o-notation</div>
+<p>
+Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>o</mi></math> (small 'o') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> if there exists a positive constant <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>C</mi></math> and a sufficiently large positive integer number <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>N</mi></math> such that for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mo>n</mo>
+  <mi>&ge;</mi>
+  <mo>N</mo>
+</math> the following inequality is true <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mi>&ge;</mi>
+<mi>C</mi>
+<mo>*</mo>
+<mi>g</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>
+</p>
+<p>
+That is, for large enough arguments the values of the first function which is the 'o' of the second function are larger than the values of the second function multiplied by some constant.
+</p>
+</div>
+<div class="artefact-label" href="#1.7">1.7 - o-notation</div>
+
+<div class="highlighted">
+<div class="definition-term">O-notation</div>
+<p>
+Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi></math> (big 'O') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> if and only if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>.
+</p>
+<p>
+That is, for large enough arguments the values of the first function which is the 'O' of the second function are smaller than the values of the second function multiplied by some constant.
+</p>
+</div>
+<div class="artefact-label" href="#1.8">1.8 - O-notation</div>
+
+<div class="highlighted">
+<div class="definition-term">&#920;-notation</div>
+<p>
+Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920;</mi></math> (theta) of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920;</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> if and only if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>.
+</p>
+<p>
+That is, for large enough arguments the values of the first function which is the '&#920' of the second function are smaller than the values of the second function multiplied by some constant and at the same time larger than the values of the second function multiplied by some other constant.
+</p>
+<p>
+In this case we also say that both functions are asymptotically equivalent.
+</p>
+</div>
+<div class="artefact-label" href="#1.9">1.9 - &#920;-notation</div>
+
+Let's now prove quickly a simple theorem given the above definition and justify why in fact we say that both functions are asymptotically equivalent if one of them is a '&#920' of another.
+
+<div class="highlighted">
+<div class="theorem-title">Equivalency of &#920-notation</div>
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> if and only if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>.
+</p>
+
+<p>
+The equation above allows us to say that the functions <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> are equivalent in case one of them is a '&#920' of another, in fact it does not matter which one.
+</p>
+</div>
+<div class="artefact-label" href="#1.10">1.10 - Equivalency of &#920-notation</div>
+
+<p>
+<div class="section-label">Proof:</div>
+</p>
+
+<p>
+For proving the theorem it is enough to show that from <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> it follows that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>. Because once we prove this fact we can just exchange <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and see that from <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> it also follows that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>. And those two observations will prove the theorem, since the first one proves 'only if' and the second one 'if'.
+</p>
+
+<p>
+To finish the proof of the theorem let's now prove that from <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> it follows that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>. For this we will first look at the definition 1.9 of &#920-notation. Given that from <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> by definition this means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>.
+But at the same time according to the definition 1.8 of O-notation <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> is the same as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>, and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> is the same as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>. At this point we have both <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and by the definition 1.9 of &#920-notation this just means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>. This finishes the proof of the theorem. &#x25a0;
+</p>
+
 TODO:
+
+Discuss that the argument values can not only be increasing but in fact be reaching any chosen limit.
 
 Discuss that the O notation may in fact be irrelevant in case we are dealing with relatively small inputs like arrays of no more than 10 elements, etc.
 
