@@ -694,9 +694,394 @@ But at the same time according to the definition 1.8 of O-notation <math xmlns='
 In our definitions and when we talk about asymptotic behavior we always assume that the argument of the functions in question is growing towards positive infinity. In our case this covers the behavior of the input size and the fact that normally the time complexity grows as the input size grows and we want to compare the time complexities with each other when they are large. However, the given definitions of o, O and &#920 can be generalized and be relevant for functions that accept arguments other than positive integers and for the arguments approaching values other than plus infinity. However, for our needs in this book this is a bit excessive and we will just use the simplified definitions given above which will be more than enough for the algorithms we are going to consider later.
 </p>
 
+<div class="highlighted">
+<div class="theorem-title">Substitution with &#920-equivalent functions</div>
+In expressions using asymptotic notation we can substitute functions with other functions that are &#920-equivalent to the original functions. More formally:
+<ol>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+  If
+  <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+</ol>
+
+<p>
+These observations allow us to freely substitute functions with their &#920-equivalent functions which may allow us to potentially simplify expressions that use asymptotic notation.
+</p>
+</div>
+<div class="artefact-label" href="#1.11">1.11 - Substitution with &#920-equivalent functions</div>
+
+<p>
+<div class="section-label">Proof:</div>
+</p>
+
+<p>
+  Let's prove all the points stated above starting with the first one.
+</p>
+
+<p>
+  <ol>
+    <li>
+If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> then according to the definition 1.9 of &#920-notation this means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math>. Then according to the definition 1.7 of o-notation we can find TODO
+    </li>
+  </ol>
+</p>
+
+TODO: O(h) +/- O(h), C*O(h), etc. same for o, &#920
+TODO: f = O(g), g = O(h) => f = O(h), same for o, &#920
+
 <p>
 That was quite a bit of formalization, and if you feel a bit confused, don't despair, all will become much clearer after a few simple examples. But even if you still do not grasp the mathematics behind the definition then hopefully you will have at least some intuitive feeling of what the asymptotic notation actually means.
 </p>
+
+<div class="highlighted no-artefact-label">
+  <div class="example-title">o-notation, O-notation</div>
+<ol>
+<li>
+<div>
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+  <mi>n</mi>
+  <mn>2</mn>
+</msup>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mrow>
+  <mi>n</mi>
+</mrow>
+<mo>)</mo>
+</math>
+and
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mrow>
+  <msup>
+    <mi>n</mi>
+    <mn>2</mn>
+  </msup>
+</mrow>
+<mo>)</mo>
+</math>
+</div>
+
+This is obvious according to the given definition 1.7 of o-notation, we just need to find 
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>C</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>N</mi></math> from the definition. But this is relatively easy in this case, we just take <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>C</mi>
+  <mo>=</mo>
+  <mi>1</mi>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>N</mi>
+  <mo>=</mo>
+  <mi>2</mi>
+</math> we see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+  <mi>n</mi>
+  <mn>2</mn>
+</msup>
+<mo>&ge;</mo>
+<mi>n</mi>
+</math> and then by definition <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+  <mi>n</mi>
+  <mn>2</mn>
+</msup>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mrow>
+  <mi>n</mi>
+</mrow>
+<mo>)</mo>
+</math>. But even intuitively it is clear that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+  <mi>n</mi>
+  <mn>2</mn>
+</msup>
+</math> at some point becomes larger than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>n</mi>
+</math>. Then by definition 1.8 of O-notation we also immediately see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mrow>
+  <msup>
+    <mi>n</mi>
+    <mn>2</mn>
+  </msup>
+</mrow>
+<mo>)</mo>
+</math>.
+</li>
+<li>
+  <div>
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mrow>
+  <mi>8</mi>
+</mrow>
+<mo>)</mo>
+</math>
+and
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>8</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mrow>
+  <mi>n</mi>
+</mrow>
+<mo>)</mo>
+</math>
+</div>
+<p>
+We just again note that we take <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>C</mi>
+  <mo>=</mo>
+  <mi>1</mi>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>N</mi>
+  <mo>=</mo>
+  <mi>8</mi>
+</math> or even <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>C</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mo>1</mo>
+    <mo>2</mo>
+  </mfrac>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>N</mi>
+  <mo>=</mo>
+  <mi>4</mi>
+</math>, or <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>C</mi>
+  <mo>=</mo>
+  <mi>8</mi>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+  <mi>N</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mo>1</mo>
+    <mo>8</mo>
+  </mfrac>
+</math>, and we also see that there is a considerable amount of freedom in choosing the constants.
+</p>
+<p>
+According to the theorem 1.11 about substituting functions with their &#920-equivalent functions and noting that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>8</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mrow>
+  <mi>1</mi>
+</mrow>
+<mo>)</mo>
+</math> we also see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mrow>
+  <mi>1</mi>
+</mrow>
+<mo>)</mo>
+</math>
+and
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>1</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mrow>
+  <mi>n</mi>
+</mrow>
+<mo>)</mo>
+</math>.
+</p>
+</li>
+<li>
+TODO: Example where there are multiple components, like n^2, n^3, n^4
+</li>
+</ul>
+
+<p>
+  
+</p>
+</div>
 
 TODO: Provide examples with functions.
 
