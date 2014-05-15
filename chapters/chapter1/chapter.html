@@ -684,7 +684,7 @@ But at the same time according to the definition 1.8 of O-notation <math xmlns='
 <mo>(</mo>
 <mi>f</mi>
 <mo>)</mo>
-</math>. This finishes the proof of the theorem. &#x25a0;
+</math>. This finishes the proof of the theorem &#x25a0;
 </p>
 
 <p>
@@ -867,7 +867,8 @@ These observations allow us to freely substitute functions with their &#920-equi
 <p>
   <ol>
     <li>
-If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<p>
+We know that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mi>f</mi>
 <mo>=</mo>
 <mi>o</mi>
@@ -881,20 +882,340 @@ If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mo>(</mo>
 <mi>f</mi>
 <mo>)</mo>
-</math> then according to the definition 1.9 of &#920-notation this means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+</math>. According to the definition 1.9 of &#920-notation this means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mi>h</mi>
 <mo>=</mo>
 <mi>o</mi>
 <mo>(</mo>
 <mi>f</mi>
 <mo>)</mo>
-</math>. Then according to the definition 1.7 of o-notation we can find TODO
+</math>. Then by definition 1.7 of o-notation we can find constants <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+  <mi>C</mi>
+  <mi>1</mi>
+</msub>
+<mo>,</mo>
+<msub>
+  <mi>C</mi>
+  <mi>2</mi>
+</msub>
+</math> and natural numbers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+  <mi>N</mi>
+  <mi>1</mi>
+</msub>
+<mo>,</mo>
+<msub>
+  <mi>N</mi>
+  <mi>2</mi>
+</msub>
+</math> such that for all natural <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>&ge;</mo>
+<msub>
+  <mi>N</mi>
+  <mi>1</mi>
+</msub>
+</math> we have <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>&ge;</mo>
+<msub>
+  <mi>C</mi>
+  <mi>1</mi>
+</msub>
+<mo>*</mo>
+<mi>g</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math> and for all natural <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>&ge;</mo>
+<msub>
+  <mi>N</mi>
+  <mi>2</mi>
+</msub>
+</math> we have <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>&ge;</mo>
+<msub>
+  <mi>C</mi>
+  <mi>2</mi>
+</msub>
+<mo>*</mo>
+<mi>f</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>. Then if we take <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>N</mi>
+<mo>=</mo>
+<mo>max</mo>
+<mo>(</mo>
+<msub>
+  <mi>N</mi>
+  <mi>1</mi>
+</msub>
+<mo>,</mo>
+<msub>
+  <mi>N</mi>
+  <mi>2</mi>
+</msub>
+<mo>)</mo>
+</math> we see for all natural <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>&ge;</mo>
+<mi>N</mi>
+</math> that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>&ge;</mo>
+<msub>
+  <mi>C</mi>
+  <mi>2</mi>
+</msub>
+<mo>*</mo>
+<mi>f</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>&ge;</mo>
+<msub>
+  <mi>C</mi>
+  <mi>2</mi>
+</msub>
+<mo>*</mo>
+<msub>
+  <mi>C</mi>
+  <mi>1</mi>
+</msub>
+<mo>*</mo>
+<mi>g</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>. If we take <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>C</mi>
+<mo>=</mo>
+<msub>
+  <mi>C</mi>
+  <mi>1</mi>
+</msub>
+<mo>*</mo>
+<msub>
+  <mi>C</mi>
+  <mi>2</mi>
+</msub>
+</math> then we see that by definition 1.7 of o-notation we have <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> which is precisely what we wanted to prove.
+</p>
+<p>
+In the process of proving the first point we also proved the following fact which will be useful for proving the second point: if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>. We can call this fact transitivity of o.
+</p>
+    </li>
+    <li>
+      Proof is done in a similar fashion. Given that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> by definition 1.9 of &#920-notation we have <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, which according to the definition of 1.8 of O-notation is the same as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>. Now combining this with <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> we see according to the transitivity of o that was proved above that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> which is exactly what we wanted to prove.
+    </li>
+    <li>
+      Given that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, which according to the definition 1.8 of O-notation is the same as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and having <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> according to already proven point 2 we see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> which again according to the definition 1.8 of O-notation is the same as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> which is what we wanted to prove.
+    </li>
+    <li>
+      Similar to the previously proven point we have <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> which allows us to apply the first point of the theorem and see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> which we wanted to prove.
+    </li>
+    <li>
+      According to the definition 1.9 of &#920-notation <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, then combining this with <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>f</mi>
+<mo>)</mo>
+</math> and the proven points 1 and 3 of the present theorem we see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> which by definition means <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and the point is proven.
+    </li>
+    <li>
+      In a fashion similar to the previous point, we apply the definition of &#920-notation twice and the proven points 2 and 4 of the present theorem to prove that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> &#x25a0;
     </li>
   </ol>
 </p>
 
 TODO: O(h) +/- O(h), C*O(h), etc. same for o, &#920
 TODO: f = O(g), g = O(h) => f = O(h), same for o, &#920
+TODO: &#920(h) + o(h) = &#920(h), O(h) + o(h) = O(h)
 
 <p>
 That was quite a bit of formalization, and if you feel a bit confused, don't despair, all will become much clearer after a few simple examples. But even if you still do not grasp the mathematics behind the definition then hopefully you will have at least some intuitive feeling of what the asymptotic notation actually means.
