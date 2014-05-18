@@ -1213,6 +1213,94 @@ In the process of proving the first point we also proved the following fact whic
   </ol>
 </p>
 
+<div class="highlighted no-artefact-label">
+  <div class="note-title">Using equality = in asymptotic notation</div>
+<p>
+Now it is time for a quick necessary note on the terminology and notation. Up until this moment we were writing <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> meaning that f belongs to a set of functions that are <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>. In no way did we imply with the = sign that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is equal to that set of functions. In fact it would be much more sensible to write <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>&isin;</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, meaning <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> belongs to the set of functions that are <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> instead of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>.
+</p>
+<p>
+For historical reasons we will continue to use the former notation and write informally that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, at the same time understanding that the equality = here is a special kind of equality, more like belonging to a set.
+</p>
+<p>
+Now, if we informally write later something like <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+<mo>+</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> it does not mean that we take a set of functions that are <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and add it to itself. There is nothing strange in adding two sets, it may just mean, for example, taking the union of two sets: a new set that contains all the elements of the original sets. But in this case everything is much simpler: we are just looking at <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>+</mo>
+<mi>h</mi>
+</math> where <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>.
+</p>
+</div>
+
+<p>
+Now let's formulate a few additional properties of o, O, and &#920 that will be useful for us when we will be estimating the time complexity of different algorithms. Proving these properties is left to the reader as an exercise.
+</p>
+
 TODO: O(h) +/- O(h), C*O(h), etc. same for o, &#920
 TODO: f = O(g), g = O(h) => f = O(h), same for o, &#920
 TODO: &#920(h) + o(h) = &#920(h), O(h) + o(h) = O(h)

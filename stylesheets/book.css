@@ -95,7 +95,8 @@ div.highlighted.no-artefact-label {
 
 div.definition-term:before,
 div.example-title:before,
-div.theorem-title:before {
+div.theorem-title:before,
+div.note-title:before {
   float: right;
   font-style: italic;
   font-weight: normal;
@@ -114,9 +115,14 @@ div.theorem-title:before {
   content: "Theorem";
 }
 
+div.note-title:before {
+  content: "Note";
+}
+
 div.definition-term,
 div.example-title,
-div.theorem-title {
+div.theorem-title,
+div.note-title {
   font-style: italic;
   font-weight: bold;
   margin-bottom: 16px;
