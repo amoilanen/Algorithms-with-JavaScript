@@ -1332,15 +1332,6 @@ Now let's formulate a few additional properties of o, O, and &#920 that will be 
 <mi>g</mi>
 <mo>)</mo>
 </math>, <math>
-<mi>f</mi>
-<mo>-</mo>
-<mi>h</mi>
-<mo>=</mo>
-<mi>o</mi>
-<mo>(</mo>
-<mi>g</mi>
-<mo>)</mo>
-</math>, <math>
 <mi>C</mi>
 <mo>*</mo>
 <mi>f</mi>
@@ -1379,15 +1370,6 @@ Now let's formulate a few additional properties of o, O, and &#920 that will be 
 <mi>g</mi>
 <mo>)</mo>
 </math>, <math>
-<mi>f</mi>
-<mo>-</mo>
-<mi>h</mi>
-<mo>=</mo>
-<mi>O</mi>
-<mo>(</mo>
-<mi>g</mi>
-<mo>)</mo>
-</math>, <math>
 <mi>C</mi>
 <mo>*</mo>
 <mi>f</mi>
@@ -1419,15 +1401,6 @@ Now let's formulate a few additional properties of o, O, and &#920 that will be 
 </math> is a constant, then <math>
 <mi>f</mi>
 <mo>+</mo>
-<mi>h</mi>
-<mo>=</mo>
-<mi>&#920</mi>
-<mo>(</mo>
-<mi>g</mi>
-<mo>)</mo>
-</math>, <math>
-<mi>f</mi>
-<mo>-</mo>
 <mi>h</mi>
 <mo>=</mo>
 <mi>&#920</mi>
@@ -1449,13 +1422,168 @@ Now let's formulate a few additional properties of o, O, and &#920 that will be 
 </p>
 
 <p>
-The theorem essentially says that if add, subtract and mulitply by a constant then the asymptotic properties of functions are preserved.
+The theorem essentially says that if add and multiply by a constant then the asymptotic properties of functions are preserved.
 </p>
 </div>
 <div class="artefact-label" href="#1.12">1.12 - Arithmetic operations and asymptotic notation</div>
 
-TODO: f = O(g), g = O(h) => f = O(h), same for o, &#920
-TODO: &#920(h) + o(h) = &#920(h), O(h) + o(h) = O(h)
+<div class="highlighted">
+<div class="theorem-title">Transitivity of asymptotic notation</div>
+<ol>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>g</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> then
+<math>
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>g</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> then
+<math>
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math> then
+<math>
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+  </li>
+</ol>
+</p>
+
+<p>
+Essentially the asymptotic notation behaves a like the normal comparison operators and equality: <math>
+<mi>o</mi>
+</math> is like <math>
+<mo>&ge;</mo>
+</math>, <math>
+<mi>O</mi>
+</math> is like <math>
+<mo>&le;</mo>
+</math> and <math>
+<mi>&#920</mi>
+</math> is like <math>
+<mo>=</mo>
+</math>. And we know that from, for example, <math>
+<mi>x</mi>
+<mo>&ge;</mo>
+<mi>y</mi>
+</math>, <math>
+<mi>y</mi>
+<mo>&ge;</mo>
+<mi>z</mi>
+</math> follows that <math>
+<mi>x</mi>
+<mo>&ge;</mo>
+<mi>z</mi>
+</math>.
+</p>
+</div>
+<div class="artefact-label" href="#1.12">1.13 - Transitivity of asymptotic notation</div>
+
+<div class="highlighted">
+<div class="theorem-title">Preserving &#920-behavior</div>
+If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>g</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>g</mi>
+<mo>&ge;</mo>
+<mi>0</mi>
+</math> then
+<math>
+<mi>f</mi>
+<mo>+</mo>
+<mi>g</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>h</mi>
+<mo>)</mo>
+</math>
+</p>
+
+<p>
+This means that when dealing with asymptotic notation we can simplify expressions by disregarding the O part and leaving the &#920 part, informally we can say that "&#920 plus O is still &#920".
+</p>
+</div>
+<div class="artefact-label" href="#1.14">1.14 - Preserving &#920-behavior</div>
+
+<p>
+Based on the theorems above we can now reason more easily about the asymptotic notation and simplify expressions in order to get rid of the unnecessary details.
+</p>
 
 <p>
 That was quite a bit of formalization, and if you feel a bit confused, don't despair, all will become much clearer after a few simple examples. But even if you still do not grasp the mathematics behind the definition then hopefully you will have at least some intuitive feeling of what the asymptotic notation actually means.
