@@ -1298,10 +1298,162 @@ Now, if we informally write later something like <math xmlns='http://www.w3.org/
 </div>
 
 <p>
-Now let's formulate a few additional properties of o, O, and &#920 that will be useful for us when we will be estimating the time complexity of different algorithms. Proving these properties is left to the reader as an exercise.
+Now let's formulate a few additional properties of o, O, and &#920 that will be useful for us when we will be estimating the time complexity of different algorithms. Proving the following theorems is left to the reader as an exercise.
 </p>
 
-TODO: O(h) +/- O(h), C*O(h), etc. same for o, &#920
+<div class="highlighted">
+<div class="theorem-title">Arithmetic operations and asymptotic notation</div>
+<ol>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+</math> is a constant, then <math>
+<mi>f</mi>
+<mo>+</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>-</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+<mo>*</mo>
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+</math> is a constant, then <math>
+<mi>f</mi>
+<mo>+</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>-</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+<mo>*</mo>
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+</math> is a constant, then <math>
+<mi>f</mi>
+<mo>+</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>-</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>C</mi>
+<mo>*</mo>
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>
+  </li>
+</ol>
+</p>
+
+<p>
+The theorem essentially says that if add, subtract and mulitply by a constant then the asymptotic properties of functions are preserved.
+</p>
+</div>
+<div class="artefact-label" href="#1.12">1.12 - Arithmetic operations and asymptotic notation</div>
+
 TODO: f = O(g), g = O(h) => f = O(h), same for o, &#920
 TODO: &#920(h) + o(h) = &#920(h), O(h) + o(h) = O(h)
 
