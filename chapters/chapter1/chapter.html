@@ -398,7 +398,7 @@ In our two last examples the functon was length, however, according to the given
 <div class="highlighted">
 <div class="definition-term">Time complexity of algorithm</div>
 <p>
-Given an algorithm, a set of its possible inputs, and the distribution (relative frequencies) of those values, we define the time complexity of this algorithm as the average number of primitive operations (take value, assign value, compare two values, etc.) it takes the algorithm to complete its work.
+Given an algorithm, a set of its possible inputs, and the distribution (relative frequencies) of the inputs, we define the time complexity of this algorithm as the average number of primitive operations (take value, assign value, compare two values, etc.) it takes the algorithm to complete its work.
 </p>
 <p>
 The function that determines the input size for a given algorithm input is normally selected in such a manner that the time complexity of the algorithm for a given input can be determined only given the size of this input. In other words the time complexity can be expressed as a function of the input size.
@@ -414,7 +414,7 @@ In the examples above we found the time complexity of the algorithms for finding
 Given the definition 1.5 of the time complexity, clearly, if we want to compare the time complexity of two different algorithms then they should have the same set of inputs and input distribution. Otherwise we will be comparing apples to oranges or two functions of single argument with different arguments. As a rule this is not a problem as we normally would like to compare the efficiency and time complexity of algorithms that solve the same problem and therefore share the possible input values. An example of this we will see in this chapter a bit later when we compare two different algorithms for finding all the prime numbers less then a given number.
 </p>
 
-<h2>Big O-notation, Theta-notation</h2>
+<h2>Asymptotic notation</h2>
 
 <p>So now we know how to express mathematically the time complexity of an algorithm as a function of the input size. But how do we compare such functions with each other in order to understand what algorithm has a better time complexity?
 </p>
@@ -444,7 +444,7 @@ In order to study how the time complexity function behaves as the input size gro
 <div class="highlighted">
 <div class="definition-term">o-notation</div>
 <p>
-Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>o</mi></math> (small 'o') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+Given two functions of single argument defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>o</mi></math> (small 'o') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mi>f</mi>
 <mo>=</mo>
 <mi>o</mi>
@@ -478,7 +478,7 @@ That is, for large enough arguments the values of the first function which is th
 <div class="highlighted">
 <div class="definition-term">O-notation</div>
 <p>
-Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi></math> (big 'O') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+Given two functions of single argument defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi></math> (big 'O') of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mi>f</mi>
 <mo>=</mo>
 <mi>O</mi>
@@ -503,7 +503,7 @@ That is, for large enough arguments the values of the first function which is th
 <div class="highlighted">
 <div class="definition-term">&#920;-notation</div>
 <p>
-Given two functions defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920;</mi></math> (theta) of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+Given two functions of single argument defined for all positive integers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math>, we say that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>f</mi></math> is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920;</mi></math> (theta) of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>g</mi></math> and denote this fact as <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
 <mi>f</mi>
 <mo>=</mo>
 <mi>&#920;</mi>
@@ -1590,7 +1590,7 @@ That was quite a bit of formalization, and if you feel a bit confused, don't des
 </p>
 
 <div class="highlighted no-artefact-label">
-  <div class="example-title">o-notation, O-notation</div>
+  <div class="example-title">Examples of asymptotic notation</div>
 <ol>
 <li>
 <div>
@@ -1763,30 +1763,268 @@ and
 </p>
 </li>
 <li>
-TODO: Example where there are multiple components, like n^2, n^3, n^4
+<div>
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>10</mi>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>+</mo>
+<mi>243</mi>
+<msup>
+<mi>n</mi>
+<mn>3</mn>
+</msup>
+<mo>+</mo>
+<mi>41</mi>
+<mi>n</mi>
+<mo>+</mo>
+<mi>5</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>
+</div>
+<p>
+Indeed, first according to the theorem 1.12 about arithmetic operations we note that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>10</mi>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>, then we see directly from definition 1.8 of O that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>243</mi>
+<msup>
+<mi>n</mi>
+<mn>3</mn>
+</msup>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>, <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>41</mi>
+<mi>n</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>, and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>5</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>. According to the theorem 1.12 about arithmetic operations we also note that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>243</mi>
+<msup>
+<mi>n</mi>
+<mn>3</mn>
+</msup>
+<mo>+</mo>
+<mi>41</mi>
+<mi>n</mi>
+<mo>+</mo>
+<mi>5</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>, which combined with the knowledge that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>10</mi>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math> according to the theorem 1.14 of preserving the &#920 behavior means <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>10</mi>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>+</mo>
+<mi>243</mi>
+<msup>
+<mi>n</mi>
+<mn>3</mn>
+</msup>
+<mo>+</mo>
+<mi>41</mi>
+<mi>n</mi>
+<mo>+</mo>
+<mi>5</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>4</mn>
+</msup>
+<mo>)</mo>
+</math>.
+</p>
+</li>
+<li>
+<div>
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+<mi>e</mi>
+<mn>n</mn>
+</msup>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>10</mn>
+</msup>
+<mo>)</mo>
+</math>
+</div>
+<p>
+The proof is a bit more involved and will be omitted here.
+</p>
 </li>
 </ul>
-
-<p>
-  
-</p>
 </div>
 
-TODO: Provide examples with functions.
+<p>
+Later we may also use special names for various functions depending on their asymptotic behavior. We call "linear" all the functions that belong to <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>. "Linear" functions are a particular case of "polynomial" functions, which are precisely the class of functions that are <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mn>k</mn>
+</msup>
+<mo>)</mo>
+</math> where <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>k</mi>
+</math> is a natural number. Functions that are <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>a</mi>
+<mn>n</mn>
+</msup>
+<mo>)</mo>
+</math> for some <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>a</mi>
+<mo>&gt;</m0>
+<mi>0</mi>
+</math> are called "exponential".
+</p>
 
-TODO:
+<p>
+The introduced asymptotic notation universal in the sense that we can use it for analyzing not only time complexity but the behavior of any functions of single argument when their argument indefinitely grows to plus infinity.
+</p>
 
-Discuss that the argument values can not only be increasing but in fact be reaching any chosen limit.
+<p>
+We should note at this point that although the asymptotic notation can be useful when analyzing and comparing time complexities of algorithms it certainly has its limits. For example, if the input size for a particular problem we are trying to solve stays relatively small, then we would like to compare not the asymptotic behavior but absolute values of the functions. In this case exponential time complexity <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msup>
+<mi>2</mi>
+<mn>n</mn>
+</msup>
+</math> is in fact preferrable to the linear time complexity <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>10000</mi>
+<mi>n</mi>
+</math> for <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>&le;</mo>
+<mi>10</mi>
+</math>.
+</p>
 
-Discuss that the O notation may in fact be irrelevant in case we are dealing with relatively small inputs like arrays of no more than 10 elements, etc.
+<p>
+Note, that once the input size starts growing beyond 10 the exponential functions starts to loose out to the linear one dramatically. And as we noted before, informally, probably for small input sizes all the algorithms execute for a relatively short time. This is in fact, why we analyze the asymptotic behavior.
+</p>
 
-If we are doing some optimization for small or medium inputs we should compare the function values, not just the asymptotic behavior.
+<p>
+But also note that if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>&le;</mo>
+<mi>5</mi>
+</math> then the exponential function is more than 100 faster than the linear one which is quite a lot.
+</p>
+
+<p>
+No confusion should happen here, it is just for small input sizes the asymptotic behavior matters much less than the constants that occur in the functions (like 10000 in this example) and absolute values. If we are doing some optimization for small or medium inputs then we should compare the function values, and not just the asymptotic behavior which may be quite irrelevant in this case as we have just shown. Each tool has natural boundaries and conditions inside which it should be best applied, the asymptotic notation is in no way different.
+</p>
 
 <h2>Storage complexity</h2>
 
-TODO:
+<p>
+Another important characteristic that can be used to describe and compare the efficiency of different algorithms is storage complexity. If time complexity shows how fast an algorithm executes the storage complexity shows how much memory space it takes.
+</p>
 
-Tradeoff speed vs. storage.
+<p>
+When comparing algorithms we should not just compare execution times, but rather look at the bigger picture and various characteristics such as storage complexity. Intuitively, if we have a somewhat faster algorithm that consumes a lot of memory, we may prefer its slower alternative which is more memory-efficient.
+</p>
+
+<p>
+Let us now define the storage complexity. Just like for time complexity we need to take into account that algorithms can have various inputs of varying size being provided.
+</p>
+
+<div class="highlighted">
+<div class="definition-term">Storage complexity of algorithm</div>
+<p>
+Given an algorithm, a set of its possible inputs, and the distribution (relative frequencies) of the inputs, we define the storage complexity of this algorithm as the average number of different variables it takes the algorithm to complete its work.
+</p>
+<p>
+Analogous to the time complexity case the function that determines the input size for a given algorithm input is normally selected in such a manner that the storage complexity of the algorithm for a given input can be determined only given the size of this input. In other words the storage complexity can be expressed as a function of the input size.
+</p>
+</div>
+<div class="artefact-label" href="#1.5">1.5 - Storage complexity of algorithm</div>
+
+<p>
+Just like time complexity, normally storage complexity increases as the input size grows. And then we can just re-use the same asymptotic notation we introduced above and talk about "linear", "polynomial", "exponential", etc. storage complexity.
+</p>
+
+TODO: Example, algorithm and estimating its storage complexity.
+
+TODO: Discuss Tradeoff speed vs. storage.
 
 <h2>Eratosthenes sieve</h2>
 
