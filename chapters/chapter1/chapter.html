@@ -1418,6 +1418,123 @@ Now let's formulate a few additional properties of o, O, and &#920 that will be 
 <mo>)</mo>
 </math>
   </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>,</mo>
+<mi>g</mi>
+<mo>,</mo>
+<mi>h</mi>
+<mo>,</mo>
+<mi>u</mi>
+<mo>&gt;</mo>
+<mi>0</mi>
+</math>, then <math>
+<mi>f</mi>
+<mo>*</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>*</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>,</mo>
+<mi>g</mi>
+<mo>,</mo>
+<mi>h</mi>
+<mo>,</mo>
+<mi>u</mi>
+<mo>&gt;</mo>
+<mi>0</mi>
+</math>, then <math>
+<mi>f</mi>
+<mo>*</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>*</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>
+  </li>
+  <li>
+    If <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>f</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>)</mo>
+</math>,
+<math>
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>, <math>
+<mi>f</mi>
+<mo>,</mo>
+<mi>g</mi>
+<mo>,</mo>
+<mi>h</mi>
+<mo>,</mo>
+<mi>u</mi>
+<mo>&gt;</mo>
+<mi>0</mi>
+</math>, then <math>
+<mi>f</mi>
+<mo>*</mo>
+<mi>h</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>g</mi>
+<mo>*</mo>
+<mi>u</mi>
+<mo>)</mo>
+</math>
+  </li>
 </ol>
 </p>
 
@@ -2013,22 +2130,295 @@ Let us now define the storage complexity. Just like for time complexity we need 
 Given an algorithm, a set of its possible inputs, and the distribution (relative frequencies) of the inputs, we define the storage complexity of this algorithm as the average number of different variables it takes the algorithm to complete its work.
 </p>
 <p>
-Analogous to the time complexity case the function that determines the input size for a given algorithm input is normally selected in such a manner that the storage complexity of the algorithm for a given input can be determined only given the size of this input. In other words the storage complexity can be expressed as a function of the input size.
+Analogous to the time complexity case the function that determines the input size for a given algorithm input is normally selected in such a manner that the storage complexity can be expressed as a function of the input size. In case an algorithm uses an array or complex data structure we count as a separate variable each primitive element of the array or field of the object.
 </p>
 </div>
-<div class="artefact-label" href="#1.5">1.5 - Storage complexity of algorithm</div>
+<div class="artefact-label" href="#1.15">1.15 - Storage complexity of algorithm</div>
 
 <p>
 Just like time complexity, normally storage complexity increases as the input size grows. And then we can just re-use the same asymptotic notation we introduced above and talk about "linear", "polynomial", "exponential", etc. storage complexity.
 </p>
 
-TODO: Example, algorithm and estimating its storage complexity.
-
-TODO: Discuss Tradeoff speed vs. storage.
+<p>
+We can of course consider other measures of how efficient algorithm is, not just the time and storage complexity but, for example, the size of the algorithm specification (number of lines of JavaScript code in case of JavaScript programs). Some algorithms can be better than others not only in terms of execution time but also storage space and brevity, but quite often we have to compare two algorithms one of which is faster but consumes more memory. In this case we face a trade-off of storage vs. speed and have to decide what is more important and consider the storage and time complexity together. We will see an example of such algorithms later in this chapter when we solve the problem of finding all prime numbers less than a given number.
+</p>
 
 <h2>Eratosthenes sieve</h2>
 
-TODO:
+<p>
+A prime number is a number that cannot be divided without a remainder by any number less than it.
+</p>
+
+<div class="highlighted">
+<div class="definition-term">Prime number</div>
+<p>
+A positive integer number <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math> greater than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>1</mi></math> is called "prime" if there does not exist a number <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>1</mi>
+<mo>&lt;</mo>
+<mi>k</mi>
+<mo>&lt;</mo>
+<mi>n</mi>
+</math> such that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mfrac>
+<mi>n</mi>
+<mi>k</mi>
+</mfrac>
+</math> is an integer number.
+</p>
+<p>
+That is a prime number is a special kind of number that does not have numbers that can divide it except for <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>1</mi></math> and the number itself.
+</p>
+</div>
+<div class="artefact-label" href="#1.16">1.16 - Prime number</div>
+
+<p>
+Now we will consider a couple of algorithms for finding all prime numbers that are less than a given number and then use the developed mathematical means to estimate and compare their time and storage complexity.
+</p>
+
+<p>
+The first algorithm is based on the just given definition. First, let's define a function that checks if the number is prime.
+</p>
+
+<pre class="line-numbers language-javascript">
+<code>function isPrime(number) {
+  for (var i = 2; i < number; i++) {
+    if (number % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}</code>
+</pre>
+
+<p>
+In the line 2 we iterate over all the numbers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>1</mi>
+<mo>&lt;</mo>
+<mi>i</mi>
+<mo>&lt;</mo>
+<mi>n</mi>
+</math> and for each one of them check if <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>i</mi></math> divides the given number in the line 3. If it does, then by definition 1.16 the given number is not prime and we return <i>false</i> in the line 4. If on the other hand we iterated through all the numbers other than <i>1</i> and <i>number</i> and none of them divides <i>number</i> then by definition 1.16 <i>number</i> is prime and we return <i>true</i>.
+</p>
+
+<p>
+Now we still need a function that would iterate through all the numbers smaller than the given one and determine if they are prime. For testing whether a number is prime we just defined the function <i>isPrime</i> and can already use it.
+</p>
+
+<pre class="line-numbers language-javascript">
+<code>function primesUpTo(number) {
+    var primes = [];
+
+    for (var current = 2; current <= number; current++) {
+      if (isPrime(current)) {
+        primes.push(current);
+      }
+    }
+    return primes;
+  }</code>
+</pre>
+
+<p>
+In line 2 we initialize the array of all the found primes to an empty array and then in lines 4-8 we iterate over all the potentially prime numbers and check for every number if it is indeed prime in the line 5. Then if it is prime we push it into the array of found prime numbers in line 6. Once we looked through all the potentially prime numbers we return the accumulated result in line 9.
+</p>
+
+<p>
+What about the time and storage complexity of the algorithm? First we will choose the input size as the number we provide as an input, let's say that this number is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math>.
+</p>
+
+<p>
+The time complexity is easy to estimate by looking at the implementation of <i>isPrime</i> and <i>primesUpTo</i>.
+</p>
+<p>
+It is relatively easy to note from the code that <i>isPrime</i> performs not fewer than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>-</mo>
+<mi>1</mi>
+</math> steps and no more than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>3</mi>
+<mi>n</mi>
+<mo>-</mo>
+<mi>1</mi>
+</math>, which means that time complexity <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>-</mo>
+<mi>1</mi>
+<mo>)</mo>
+</math> and <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>o</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math> according to the theorem 1.11 about substitution with equivalent functions since <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>-</mo>
+<mi>1</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>. In a similar way we note that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>3</mi>
+<mi>n</mi>
+<mo>)</mo>
+</math> which after applying theorem 1.12 about artihmetic operations with asymptotic notation means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>O</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>, and then <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math> for the time complexity of <i>isPrime</i>.
+</p>
+
+<p>
+Now let's consider <i>primesUpTo</i>. The code of the function closely resembles that of <i>isPrime</i>, and the number of steps is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>primesUpTo</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>*</mo>
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>)</mo>
+</math> as it can be seen similarly to what we have done when measured the time complexity of <i>isPrime</i>. We note that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>, then according to the theorem 1.12 about arithmetic operations with asymptotic notation point 6 we see that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>n</mi>
+<mo>*</mo>
+<msub>
+<mi>t</mi>
+<mi>isPrime</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>*</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mi>2</mi>
+</msup>
+<mo>)</mo>
+</math>
+and
+<math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>primesUpTo</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mi>2</mi>
+</msup>
+<mo>)</mo>
+<mo>)</mo>
+</math> which according to the theorem 1.13 about the transitivity of asymptotic notation means that <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<msub>
+<mi>t</mi>
+<mi>primesUpTo</mi>
+</msub>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+<mo>=</mo>
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mi>2</mi>
+</msup>
+<mo>)</mo>
+</math>.
+</p>
+
+<p>
+Later in the book we, probably, will not be doing such a detailed analysis and will just provide a reasonable and much shorter explanation of how we estimate particular time complexity appealing more to intuition than to the formal reasoning. But even then we can provide a full formal proof based on the theorems about the asymptotic notation and counting number of steps precisely. At least, we should have definitely provided one full detailed explanation how we get the time complexity in this case. In the future this will be mostly left as an exercise for a curious reader.
+</p>
+
+<p>
+We will take a more informal approach already starting with estimating the storage complexity of the algorithm above.
+</p>
 
 <h2>Euclidus algorithm</h2>
 
