@@ -2420,6 +2420,30 @@ Later in the book we, probably, will not be doing such a detailed analysis and w
 We will take a more informal approach already starting with estimating the storage complexity of the algorithm above.
 </p>
 
+<p>
+The function <i>isPrime</i> uses two variables and has the storage complexity <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi><mo>(</mo><mi>1</mi><mo>)</mo></math>. This function is called <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math> times where <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math> is the input size (the upper limit up until which we are searching for prime numbers). Then just like for the time complexity we see that <i>isPrime</i> contributes <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math> to the overall storage complexity of the algorithm. But if we additionally assume that the variables used during different invokations of <i>isPrime</i> are reused and are actually the same variables, then it is obvious that the storage complexity is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920</mi><mo>(</mo><mi>1</mi><mo>)</mo></math> since only <i>2</i> variables are used.
+</p>
+
+<p>
+Now let's look at the function <i>primesUpTo</i>. It creates and uses an array which maximum size is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math> where <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math> is the size of input. Then <i>primesUpTo</i> has the storage complexity of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920</mi><mo>(</mo><mi>n</mi><mo>)</mo></math> taking into account that as we discovered earlier <i>isPrime</i> has the time complexity of <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920</mi><mo>(</mo><mi>1</mi><mo>)</mo></math>. Note that we really cannot easily say much more about the storage complexity of <i>primesUpTo</i> and hence of the algorithm in terms of &#920. The storage complexity is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>&#920</mi><mo>(</mo><mi>p</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo></math> where <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>p</mi></math> is the function that gives the number of prime numbers which are less or equal than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>n</mi></math>.
+</p>
+
+<p>
+So, as we just have shown the time complexity of the algorithm based on the given definition of prime numbers is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mi>2</mi>
+</msup>
+<mo>)</mo>
+</math> and the storage complexity is <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></math>.
+</p>
+
+<p>
+These are quite satisfactory results as the studied algorithm is not particularly slow or memory-consuming. But let's see if we can improve it still. For example, let's think whether it is possible to find prime numbers in a linear time. The algorithm we will discuss does just that and is called "Eratosthenes sieve" because of the way we sift through all the numbers trying to find out which ones are prime.
+</p>
+
 <h2>Euclidus algorithm</h2>
 
 TODO:
