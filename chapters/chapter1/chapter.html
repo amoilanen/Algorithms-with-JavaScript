@@ -2444,9 +2444,45 @@ So, as we just have shown the time complexity of the algorithm based on the give
 These are quite satisfactory results as the studied algorithm is not particularly slow or memory-consuming. But let's see if we can improve it still. For example, let's think whether it is possible to find prime numbers in a linear time. The algorithm we will discuss does just that and is called "Eratosthenes sieve" because of the way we sift through all the numbers trying to find out which ones are prime.
 </p>
 
+<p>
+The idea is quite simple. We iterate over all the numbers that are less than a given one and for each such number <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>k</mi></math> we subsequently exclude from further consideration numbers <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>2</mi><mi>k</mi> </math>, <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression"><mi>3</mi><mi>k</mi></math>, ... until we reach such a k-fold number which is greater than the original given number. If some k-fold number was already excluded at an earlier stage, we just skip it. Then we exclude the current number and move on to the next number that was not yet excluded. If we take on each step the smallest not yet excluded number, than this number, simply because it would have been excluded otherwise on the earlier steps, has the property that it cannot be divided by any number which is less than it and is not <i>1</i>. Or by definition the smallest unexcluded number is prime. If one each step we remember the current number as prime then after we have considered all the numbers less than a given one we will have the list of all prime numbers less than a given one. Let's give a quick illustration of how this algorithm might work if the given number is <i>15</i>.
+</p>
+
+<div class="medium illustration">
+  <img src="chapters/chapter1/svg/1.1.eratosthenes.sieve.svg" title="Sieve of Eratosthenes up to 15"/>
+  <div class="artefact-label">1.17 - Sieve of Eratosthenes up to 15</div>
+</div>
+
+<p>
+First we have no numbers excluded and the smallest non-excluded number is <i>2</i>. We remember that <i>2</i> is prime and cross out <i>4</i>, <i>6</i>, <i>8</i>, <i>10</i>, <i>12</i>, <i>14</i>. After noting that <i>2</i> is prime we exclude it too.
+</p>
+
+<p>
+Now the smallest non-excluded number is <i>3</i>. We remember that it is prime and exclude number <i>9</i>. The numbers <i>6</i> and <i>12</i> were already excluded on the previous step so we just skip them. Then we exclude <i>3</i>.
+</p>
+
+<p>
+The next smallest non-excluded number is <i>5</i>. The only number that is divided by it and is less or equal than <i>15</i> is actually number <i>15</i> itself. We exclude it on this step.
+</p>
+
+<p>
+The next non-excluded number is <i>7</i> and all the 7-fold numbers less or equal to <i>15</i> were already excluded.
+</p>
+
+<p>
+The next are <i>11</i> and <i>13</i> for which we do not have to exclude any numbers. The algorithm finishes its work and we found all the prime numbers less or equal than <i>15</i>. These numbers are <i>2</i>, <i>3</i>, <i>5</i>, <i>7</i>, <i>11</i>, <i>13</i>.
+</p>
+
+<p>
+If this still sounds like something complicated, it is just because it is written in prose and maybe not formal enough. Let's provide the implementation in JavaScript and comment what we do on each step of the algorithm.
+</p>
+
+TODO: Implementation in JavaScript
+TODO: Discuss that the algorithm is faster but more complicated, this is a trade-off
+
 <h2>Euclidus algorithm</h2>
 
-TODO:
+TODO: Discuss that the algorithm is faster and simpler at the same time
 
 <p>Here goes the contents and some JavaScript code</p>
 
@@ -2468,11 +2504,6 @@ And here goes an illustration:
 </p>
 
 <!-- TODO: Use Handlebars template to render such thing as an illustration? -->
-
-<div class="medium illustration">
-  <img src="chapters/chapter1/svg/1.1.eratosthenes.sieve.svg" title="Sieve of Eratosthenes up to 15"/>
-  <div class="artefact-label">1.1 - Sieve of Eratosthenes up to 15</div>
-</div>
 
 <p>
 And after that we can use an inline formula
