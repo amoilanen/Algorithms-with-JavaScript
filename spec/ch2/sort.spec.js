@@ -1,6 +1,6 @@
 describe("chapter2.sort", function() {
 
-  ["selectionSort", "insertionSort"].forEach(function(funcName) {
+  ["selectionSort", "insertionSort", "bubbleSort"].forEach(function(funcName) {
 
     it(funcName + " should sort an array", function() {
       expect(ch2[funcName]([6, 0, 4, 3, 9, 8, 7, 1, 2, 5])).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
