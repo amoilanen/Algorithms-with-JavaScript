@@ -1,14 +1,14 @@
 (function(host) {
 
   function max(elements) {
-    var max;
+    var result;
 
     for (var i = 0; i < elements.length; i++) {
-      if (max == undefined || elements[i] > max) {
-        max = elements[i];
+      if (result === undefined || elements[i] > result) {
+        result = elements[i];
       }
     }
-    return max;
+    return result;
   }
 
   host.ch1 = host.ch1 || {};

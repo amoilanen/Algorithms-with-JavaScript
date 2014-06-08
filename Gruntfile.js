@@ -5,13 +5,13 @@ module.exports = function(grunt) {
             files: [
                 'Gruntfile.js',
                 //'spec/**/*.js',
-                //'src/**/*.js'
+                'src/**/*.js'
             ],
             options: {
                 multistr: true,
                 node: true,
                 curly: false,
-                eqeqeq: true,
+                eqeqeq: false,
                 immed: true,
                 latedef: false,
                 newcap: true,

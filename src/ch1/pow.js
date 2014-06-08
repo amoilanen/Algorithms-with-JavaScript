@@ -12,7 +12,7 @@
     var result = 1;
 
     while (power > 0) {
-      if (power % 2 == 0) {
+      if (power % 2 === 0) {
         number = number * number;
         power = power / 2;
       } else {
