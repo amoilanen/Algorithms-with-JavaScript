@@ -30,3 +30,41 @@ describe("chapter2.sort", function() {
     });
   });
 });
+
+describe("chapter2.merge", function() {
+
+  it("should merge two presorted subarrays of equal length", function() {
+    var arr = [1, 3, 5, 8, 2, 4, 6, 7];
+
+    ch2.merge(arr, 0, 4, 8);
+    expect(arr).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  it("should merge two presorted subarrays of different length", function() {
+    var arr = [1, 3, 5, 6, 2, 4];
+
+    ch2.merge(arr, 0, 4, 6);
+    expect(arr).toEqual([1, 2, 3, 4, 5, 6]);
+  });
+
+  it("should merge two presorted sub-arrays one of which consists of one element", function() {
+    var arr = [1, 3, 4, 5, 2];
+
+    ch2.merge(arr, 0, 4, 5);
+    expect(arr).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it("should merge two presorted sub-arrays one of which is empty", function() {
+    var arr = [1, 2, 3, 4];
+
+    ch2.merge(arr, 0, 4, 4);
+    expect(arr).toEqual([1, 2, 3, 4]);
+  });
+
+  it("should merge two presorted sub-arrays one of which starts with non-zero index", function() {
+    var arr = [5, 8, 3, 1, 2, 6, 4, 7];
+
+    ch2.merge(arr, 4, 6, 8);
+    expect(arr).toEqual([5, 8, 3, 1, 2, 4, 6, 7]);
+  });
+});
