@@ -27,8 +27,22 @@
   }
 
   function mergeSort(elements) {
-    //TODO:
-    return elements;
+    var copy = elements.slice(0);
+    var step = 1;
+    var start = -1;
+    var middle = -1;
+    var end = -1;
+
+    while(step < copy.length) {
+      step = step * 2;
+      for (start = 0; start < copy.length; start = start + step) {
+        middle = Math.min(start + step / 2, copy.length);
+        end = Math.min(start + step, copy.length);
+
+        merge(copy, start, middle, end);
+      }
+    }
+    return copy;
   }
 
   host.ch2 = host.ch2 || {};

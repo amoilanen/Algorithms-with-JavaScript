@@ -1,6 +1,6 @@
 describe("chapter2.sort", function() {
 
-  ["selectionSort", "insertionSort", "bubbleSort"].forEach(function(funcName) {
+  ["selectionSort", "insertionSort", "bubbleSort", "mergeSort"].forEach(function(funcName) {
 
     it(funcName + " should sort an array", function() {
       expect(ch2[funcName]([6, 0, 4, 3, 9, 8, 7, 1, 2, 5])).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -16,6 +16,10 @@ describe("chapter2.sort", function() {
 
     it(funcName + " should return same array when it consists of one element", function() {
       expect(ch2[funcName]([15])).toEqual([15]);
+    });
+
+    it(funcName + " should sort array that consists of two elements", function() {
+      expect(ch2[funcName]([2, 1])).toEqual([1, 2]);
     });
 
     it(funcName + " should return same array when it is already sorted", function() {
