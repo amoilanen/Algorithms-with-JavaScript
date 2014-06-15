@@ -1,29 +1,21 @@
 (function(host) {
 
-  function get(arr, index) {
-    return arr[index - 1];
-  }
-
-  function set(arr, index, value) {
-    arr[index - 1] = value;
-  }
-
   function swap(arr, i, j) {
-    var temp = get(arr, i);
-    set(arr, i, get(arr, j));
-    set(arr, j, temp);
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
 
   function leftIndex(i) {
-    return 2 * i;
-  }
-
-  function rightIndex(i) {
     return 2 * i + 1;
   }
 
+  function rightIndex(i) {
+    return 2 * i + 2;
+  }
+
   function parentIndex(i) {
-    return Math.floor(i / 2);
+    return Math.floor((i + 1) / 2) - 1;
   }
 
   function heapify(arr, heapSize, index) {
@@ -32,8 +24,7 @@
     var indexOfMaximum = index;
 
     [left, right].forEach(function(subTreeRootIndex) {
-      if ((subTreeRootIndex <= heapSize)
-          && (get(arr, subTreeRootIndex) > get(arr, indexOfMaximum))) {
+      if ((subTreeRootIndex < heapSize) && (arr[subTreeRootIndex] > arr[indexOfMaximum])) {
         indexOfMaximum = subTreeRootIndex;
       }
     });
@@ -46,7 +37,7 @@
   function buildHeap(arr, heapSize) {
     var lastNonLeafIndex = parentIndex(heapSize);
 
-    for (var i = lastNonLeafIndex; i >= 1; i--) {
+    for (var i = lastNonLeafIndex; i >= 0; i--) {
       heapify(arr, heapSize, i);
     }
   }
@@ -56,10 +47,10 @@
     var heapSize = arr.length;
 
     buildHeap(arr, heapSize);
-    for (var i = arr.length; i > 1; i--) {
-      swap(arr, 1, i);
+    for (var i = arr.length - 1; i > 0; i--) {
+      swap(arr, 0, i);
       heapSize--;
-      heapify(arr, heapSize, 1);
+      heapify(arr, heapSize, 0);
     }
     return arr;
   }
