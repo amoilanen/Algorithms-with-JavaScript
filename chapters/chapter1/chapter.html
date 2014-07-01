@@ -2477,11 +2477,115 @@ The next are <i>11</i> and <i>13</i> for which we do not have to exclude any num
 If this still sounds like something complicated, it is just because it is written in prose and maybe not formal enough. Let's provide the implementation in JavaScript and comment what we do on each step of the algorithm.
 </p>
 
-TODO: Implementation in JavaScript
-TODO: Discuss that the algorithm is faster but more complicated, this is a trade-off
+<pre class="language-javascript line-numbers with-artefact-label">
+<code>function primesUpTo(number) {
+  var isPrimeNumber = [];
+  var primes = [];
+  var current = 2;
+
+  for (var i = 2; i <= number; i++) {
+    isPrimeNumber[i] = true;
+  }
+
+  while (current <= number) {
+    if (isPrimeNumber[current]) {
+      primes.push(current);
+      for (var j = 2  * current; j <= number; j += current) {
+        isPrimeNumber[j] = false;
+      }
+    }
+    current++;
+  }
+  return primes;
+}</code>
+</pre>
+<div class="artefact-label" href="#1.18">1.18 - Eratosthenes sieve</div>
+
+<p>
+In the line <i>1</i> we initialize the array <i>isPrime</i> which is a core data structures used in the algorithm. This array will keep track of which numbers were already discovered not to be prime and excluded. Initially, before the algorithm started its work, all the numbers greater then <i>2</i> are considered to be potentially prime and we initialize <i>isPrime</i> accordingly in the lines <i>6-8</i>.
+</p>
+
+<p>
+Line <i>3</i> contains the declaration of the array <i>primes</i> in which we will store all found prime numbers, line <i>4</i> declares <i>current</i> to store the current first not yet excluded number which is actually the next found prime number as we discussed earlier when introducing the algorithm.
+</p>
+
+<p>
+Then lines <i>10-18</i> contain the main logic of the algorithm.
+</p>
+
+<p>
+If we have not yet reached the upper limit <i>number</i> up to which we are searching for primes in line <i>10</i>, then we check in line <i>11</i> if the current number <i>current</i> was not yet excluded.
+</p>
+
+<p>
+If it was excluded, we just incremenet <i>current</i> by one in line <i>17</i> and return to line <i>10</i>. If however the current number was not yet excluded, then we know that it is prime and record it as such in line <i>12</i> by putting it into the array of found primes <i>primes</i>.
+</p>
+
+<p>
+Then the only thing left to do for the <i>current</i> number in lines <i>13-15</i> is to exclude from further consideration all the numbers less than <i>number</i> that are divisible by <i>current</i>, because then obviously by definition those numbers are not prime.
+</p>
+
+<p>
+The algorithm continues until we reach the upper limit <i>number</i> in line <i>10</i>.
+</p>
+
+<p>
+What about the time and storage complexity? Let's take a more informal approach here for the sake of brevity. If you somehow feel that this is not satisfactory, then just, feel free to go ahead and build a more formal proof based on the theorems and examples provided earlier in this chapter.
+</p>
+
+<p>
+The lines that can potentially give us a <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>O</mi>
+<mo>(</mo>
+<msup>
+<mi>n</mi>
+<mi>2</mi>
+</msup>
+<mo>)</mo>
+</math> complexity are lines <i>13-15</i> as potentially for each number we iterate over numbers that are divided by it. However, looking at the picture 1.17 and the example provided earlier we easily see that we exclude each element only once. Then the line <i>14</i> and also lines <i>13-15</i> as a whole are executed no more than <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>O</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math>
+</p> times. This means that the time complexity of the algorithm is actually <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math> since we also perform at least <i>n</i> operations during the initialization phase of the algorithm.
+</p>
+
+<p>
+So compared to the algorithm based on the definition of prime numbers we win in terms of time complexity: instead of quadtratic time for the first algorithm it is actually possible to find prime numbers less than a given one in linear time.
+</p>
+
+<p>
+We can also see that the storage complexity of the Eratosthenes sieve is linear <math xmlns='http://www.w3.org/1998/Math/MathML' class="math-expression">
+<mi>&#920</mi>
+<mo>(</mo>
+<mi>n</mi>
+<mo>)</mo>
+</math> which is worse than for the definition-based algorithm which has a constant storage complexity.
+</p>
+
+<p>
+So which algorithm is better? We win in terms of time but loose a bit in terms of storage. Also we may note that the implementation of the definition-based algorithm is a bit easier to understand.
+</p>
+
+<p>
+The answer is a question "Based on which criteria?". Normally the most important thing that is being considered is time complexity, so then Eratosthenes sieve is definitely better. But, please, note that there can be certain situations in which we can still prefer the definition-based algorithm, for example:
+<ul>
+  <li>Storage is very expensive and limited, allocating large amounts of memory is not possible</li>
+  <li>We value code simplicity more and can sacrifice a bit of performance for that</li>
+</ul>
+Just keep in mind that there is no dogma that says that we should compare algorithms only based on their time complexity, it is usually a trade-off situation where we sacrifice a few aspects of the algorithm deemed less important for the really important ones. Although let's still note that time complexity is usually considered the most important aspect that we should strive to optimize.
+</p>
 
 <h2>Euclidus algorithm</h2>
 
+TODO: Discuss the algorithm
+TODO: Provide JS implementation
 TODO: Discuss that the algorithm is faster and simpler at the same time
 
 <p>Here goes the contents and some JavaScript code</p>
