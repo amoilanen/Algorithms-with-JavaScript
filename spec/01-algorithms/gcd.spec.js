@@ -1,4 +1,4 @@
-import {gcd, gcdSlow} from '../../src/ch1/gcd'
+import {gcd, gcdSlow} from '../../src/01-algorithms/gcd'
 
 describe('chapter1.gcd', function() {
 

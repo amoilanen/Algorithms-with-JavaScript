@@ -1,4 +1,4 @@
-import { pow, powSlow } from '../../src/ch1/pow'
+import { pow, powSlow } from '../../src/01-algorithms/pow'
 
 describe('chapter1.pow', function() {
 

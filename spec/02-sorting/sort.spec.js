@@ -1,9 +1,9 @@
-import { selectionSort } from '../../src/ch2/selection.sort.js'
-import { bubbleSort } from '../../src/ch2/bubble.sort.js'
-import { insertionSort } from '../../src/ch2/insertion.sort.js'
-import { heapSort } from '../../src/ch2/heap.sort.js'
-import { mergeSort, merge } from '../../src/ch2/merge.sort.js'
-import { quickSort, partition } from '../../src/ch2/quick.sort.js'
+import { selectionSort } from '../../src/02-sorting/selection.sort.js'
+import { bubbleSort } from '../../src/02-sorting/bubble.sort.js'
+import { insertionSort } from '../../src/02-sorting/insertion.sort.js'
+import { heapSort } from '../../src/02-sorting/heap.sort.js'
+import { mergeSort, merge } from '../../src/02-sorting/merge.sort.js'
+import { quickSort, partition } from '../../src/02-sorting/quick.sort.js'
 
 describe('chapter2.sort', function() {
 

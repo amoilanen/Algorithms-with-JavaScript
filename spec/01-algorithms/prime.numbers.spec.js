@@ -1,4 +1,4 @@
-import { primesUpTo, primesUpToSlow } from '../../src/ch1/prime.numbers.js'
+import { primesUpTo, primesUpToSlow } from '../../src/01-algorithms/prime.numbers.js'
 
 describe('chapter1.prime.numbers', function() {
 

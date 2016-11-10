@@ -1,4 +1,4 @@
-import { max } from '../../src/ch1/max'
+import { max } from '../../src/01-algorithms/max'
 
 describe('chapter1.max', function() {
 

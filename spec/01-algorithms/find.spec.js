@@ -1,4 +1,4 @@
-import { find } from '../../src/ch1/find'
+import { find } from '../../src/c/find'
 
 describe('chapter1.find', function() {
 
