@@ -20,6 +20,7 @@
     }
   ],
   "scripts": {
+    "lint": "eslint src/** spec/**",
     "test": "karma start karma.conf.js",
     "test:tdd": "karma start karma.conf.js --tdd"
   },
