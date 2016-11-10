@@ -1,0 +1,5 @@
+body td.lineNumbers {
+  padding: 0;
+  width: 20px;
+  border-right: none;
+}

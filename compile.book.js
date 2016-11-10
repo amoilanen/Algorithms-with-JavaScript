@@ -3,7 +3,7 @@ const path = require('path');
 require('shelljs/global');
 
 function prepareOutputDir() {
-  rm('-rf', 'book/html');
+  //rm('-rf', 'book/html');
   mkdir('-p', 'book/html');
 }
 
