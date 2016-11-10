@@ -22,11 +22,13 @@
   "scripts": {
     "lint": "eslint src/** spec/**",
     "test": "karma start karma.conf.js",
-    "test:tdd": "karma start karma.conf.js --tdd"
+    "test:tdd": "karma start karma.conf.js --tdd",
+    "book": "node compile.book.js"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-umd": "^6.8.*",
     "babel-preset-es2015": "^6.9.*",
+    "chokidar": "^1.6.1",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.1",
@@ -34,7 +36,8 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.1",
-    "karma-spec-reporter": "0.0.26"
+    "karma-spec-reporter": "0.0.26",
+    "shelljs": "^0.7.5"
   },
   "files": [
     "spec",
