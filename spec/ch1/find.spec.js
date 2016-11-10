@@ -1,10 +1,12 @@
+import { find } from '../../src/ch1/find'
+
 describe("chapter1.find", function() {
 
   it("should return -1 if no such element", function() {
-    expect(ch1.find([2, 1, 4, 2, 3], 5)).toBe(-1);
+    expect(find([2, 1, 4, 2, 3], 5)).toBe(-1);
   });
 
   it("should return first index at which element is found", function() {
-    expect(ch1.find([5, 1, 2, 4, 2, 3, 8, 9], 2)).toBe(2);
+    expect(find([5, 1, 2, 4, 2, 3, 8, 9], 2)).toBe(2);
   });
 });

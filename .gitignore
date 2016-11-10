@@ -1,7 +1,6 @@
 .settings
 .git
 .project
-.jshintrc
 
 lib-cov
 *.seed
@@ -18,4 +17,3 @@ results
 
 npm-debug.log
 node_modules
-bower_components
