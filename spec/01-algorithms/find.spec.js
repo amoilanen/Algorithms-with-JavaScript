@@ -1,4 +1,4 @@
-import { find } from '../../src/c/find'
+import { find } from '../../src/01-algorithms/find'
 
 describe('chapter1.find', function() {
 
